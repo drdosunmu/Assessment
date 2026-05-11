@@ -1,0 +1,315 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.7">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!doctype html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="utf-8" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width,initial-scale=1" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;Relationship Position Assessment | School of Wife&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>:root{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--bg:#0b1220;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--card:#111a2e;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--text:#f5f7ff;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--muted:#c7d0ff;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--accent:#1677be;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--border:rgba(255,255,255,.12);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--danger:#ffb4a6;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>body{ margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background:linear-gradient(180deg,#070b14,var(--bg)); color:var(--text); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.wrap{ max-width:760px; margin:0 auto; padding:24px 16px 56px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.card{ background:rgba(17,26,46,.92); border:1px solid var(--border); border-radius:14px; padding:22px; box-shadow:0 10px 30px rgba(0,0,0,.35); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>h1{ font-size:22px; margin:0 0 8px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.sub{ color:var(--muted); margin:0 0 18px; line-height:1.45; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.pill{ display:inline-block; font-size:12px; padding:6px 10px; border:1px solid var(--border); border-radius:999px; color:var(--muted); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.row{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between; margin:14px 0 0; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.progress{ width:100%; height:10px; background:rgba(255,255,255,.08); border-radius:999px; overflow:hidden; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.bar{ height:100%; width:0%; background:var(--accent); transition:width .25s ease; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.qtitle{ font-size:18px; margin:14px 0 6px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.qtext{ font-size:16px; margin:0 0 12px; line-height:1.45; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.scale{ display:grid; grid-template-columns: 1fr; gap:10px; margin:12px 0 18px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.opt{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:flex; align-items:center; gap:10px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding:12px 12px; border:1px solid var(--border); border-radius:12px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>cursor:pointer; user-select:none;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background:rgba(255,255,255,.03);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.opt input{ transform:scale(1.15); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.opt:hover{ border-color:rgba(255,255,255,.25); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.btns{ display:flex; gap:10px; justify-content:space-between; margin-top:8px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>button{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>appearance:none; border:0; border-radius:12px; padding:12px 14px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight:600; cursor:pointer;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.btn{ background:var(--accent); color:white; flex:1; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.btn.secondary{ background:rgba(255,255,255,.08); color:var(--text); flex:0 0 auto; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.btn:disabled{ opacity:.45; cursor:not-allowed; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.fine{ color:var(--muted); font-size:13px; line-height:1.45; margin-top:12px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.field{ display:grid; gap:6px; margin:12px 0; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>label{ font-size:13px; color:var(--muted); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>input[type="text"], input[type="email"]{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>width:100%; padding:12px 12px; border-radius:12px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border:1px solid var(--border); background:rgba(255,255,255,.03); color:var(--text);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>outline:none;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>input:focus{ border-color:rgba(22,119,190,.9); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.alert{ border:1px solid rgba(255,255,255,.18); background:rgba(255,255,255,.05); padding:12px; border-radius:12px; margin:12px 0; color:var(--muted); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.alert.borderline{ border-color:rgba(255,180,166,.5); color:var(--danger); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.kpi{ display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top:10px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.kpi .box{ border:1px solid var(--border); border-radius:12px; padding:12px; background:rgba(255,255,255,.03); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.kpi .big{ font-size:20px; font-weight:700; margin-top:4px; color:var(--text); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.footer{ margin-top:14px; font-size:12px; color:var(--muted); opacity:.9; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>a{ color:var(--muted); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="wrap"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="card" id="app"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="footer"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>Relationship education — not therapy or a clinical diagnosis. <span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">      </span>Dr. Dos | School of Wife</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;script&gt;</p>
+<p class="p1">/** =========================</p>
+<p class="p1"><span class="Apple-converted-space"> </span>* CONFIG</p>
+<p class="p1"><span class="Apple-converted-space"> </span>* ========================= */</p>
+<p class="p1">const KIT_FORM_ACTION = "https://app.kit.com/forms/9430315/subscriptions";</p>
+<p class="p1">const ASSESSMENT_VERSION = "RPA_v1_2026-05-11";</p>
+<p class="p2"><br></p>
+<p class="p1">/** Reverse-scored questions: Q3, Q9, Q10 (0-indexed: 2, 8, 9) */</p>
+<p class="p1">const REVERSE_INDEXES = new Set([2, 8, 9]);</p>
+<p class="p2"><br></p>
+<p class="p1">/** Score cutoffs */</p>
+<p class="p1">function positionFromScore(total){</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (total &gt;= 40) return { position: "Position 1", label: "Mutual Progress" };</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (total &gt;= 30) return { position: "Position 2", label: "One Partner Stagnant" };</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (total &gt;= 20) return { position: "Position 3", label: "Slow Divergence" };</p>
+<p class="p1"><span class="Apple-converted-space">  </span>return { position: "Position 4", label: "Active Divergence" };</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">/** Borderline windows: 39–40, 29–30, 19–20 */</p>
+<p class="p1">function isBorderline(total){</p>
+<p class="p1"><span class="Apple-converted-space">  </span>return (total === 39 || total === 40 || total === 29 || total === 30 || total === 19 || total === 20);</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">/** Questions */</p>
+<p class="p1">const QUESTIONS = [</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{ key:"q1", title:"Reciprocity", text:"When I reach for connection (conversation, affection, quality time), my partner usually responds in some way." },</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{ key:"q2", title:"Initiation", text:"My partner initiates connection sometimes — not only me." },</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{ key:"q3", title:"Emotional workload", text:"I feel I’m carrying most of the emotional work in our relationship.", reverse:true },</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{ key:"q4", title:"Repair", text:"After tension or conflict, we usually repair and reconnect within a few days." },</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{ key:"q5", title:"Mutual communication", text:"Our communication feels mutual — not one-sided." },</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{ key:"q6", title:"Emotional safety", text:"I feel emotionally safe expressing needs or disappointment without it becoming a bigger problem." },</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{ key:"q7", title:"Shared life", text:"We make plans together (small or big) and follow through more often than not." },</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{ key:"q8", title:"Shared enjoyment", text:"We still have moments of warmth, laughter, or ease — even if things aren’t perfect." },</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{ key:"q9", title:"Drift signal", text:"I often feel like I’m pursuing while my partner is pulling away or disengaging.", reverse:true },</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{ key:"q10", title:"Outside pull", text:"Something outside the relationship consistently gets prioritized over us (work, screens, another attachment, etc.).", reverse:true }</p>
+<p class="p1">];</p>
+<p class="p2"><br></p>
+<p class="p1">const SCALE = [</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{ v:1, label:"Strongly Disagree" },</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{ v:2, label:"Disagree" },</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{ v:3, label:"Neutral" },</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{ v:4, label:"Agree" },</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{ v:5, label:"Strongly Agree" }</p>
+<p class="p1">];</p>
+<p class="p2"><br></p>
+<p class="p1">/** =========================</p>
+<p class="p1"><span class="Apple-converted-space"> </span>* STATE</p>
+<p class="p1"><span class="Apple-converted-space"> </span>* ========================= */</p>
+<p class="p1">let step = 0; // 0..9 questions, 10 = email gate, 11 = done</p>
+<p class="p1">const answers = Array(QUESTIONS.length).fill(null);</p>
+<p class="p2"><br></p>
+<p class="p1">/** =========================</p>
+<p class="p1"><span class="Apple-converted-space"> </span>* HELPERS</p>
+<p class="p1"><span class="Apple-converted-space"> </span>* ========================= */</p>
+<p class="p1">function reverseScore(v){ return 6 - v; } // 1-&gt;5,2-&gt;4,3-&gt;3,4-&gt;2,5-&gt;1</p>
+<p class="p2"><br></p>
+<p class="p1">function computeTotal(){</p>
+<p class="p1"><span class="Apple-converted-space">  </span>let total = 0;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>for (let i=0;i&lt;answers.length;i++){</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const v = answers[i];</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (v == null) return null;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>total += REVERSE_INDEXES.has(i) ? reverseScore(v) : v;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>return total;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function render(){</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const app = document.getElementById("app");</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const totalSteps = QUESTIONS.length + 1; // questions + email gate</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const currentIndex = Math.min(step, QUESTIONS.length); // 0..10</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const progressPct = Math.round((currentIndex / totalSteps) * 100);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>const header = `</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="row"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h1&gt;Relationship Position Assessment&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="sub"&gt;Find your pattern. Get your prescription. Takes 2–3 minutes.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="pill"&gt;${currentIndex}/${totalSteps}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="progress" aria-label="Progress"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="bar" style="width:${progressPct}%"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (step &lt; QUESTIONS.length){</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const q = QUESTIONS[step];</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const selected = answers[step];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const opts = SCALE.map(o =&gt; `</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;label class="opt"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;input type="radio" name="scale" value="${o.v}" ${selected===o.v ? "checked":""} /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div&gt;&lt;strong&gt;${o.v}&lt;/strong&gt; — ${o.label}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>`).join("");</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const reverseNote = q.reverse</p>
+<p class="p1"><span class="Apple-converted-space">      </span>? `&lt;div class="alert"&gt;Note: This item is reverse-scored behind the scenes (you don’t need to do anything).&lt;/div&gt;`</p>
+<p class="p1"><span class="Apple-converted-space">      </span>: "";</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>app.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">      </span>${header}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="qtitle"&gt;Q${step+1}. ${q.title}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="qtext"&gt;${q.text}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>${reverseNote}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="scale"&gt;${opts}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="btns"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="btn secondary" id="backBtn" ${step===0 ? "disabled":""}&gt;Back&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="btn" id="nextBtn" ${selected==null ? "disabled":""}&gt;Next&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="fine"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>Score each statement from 1 (Strongly Disagree) to 5 (Strongly Agree).</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// handlers</p>
+<p class="p1"><span class="Apple-converted-space">    </span>app.querySelectorAll('input[name="scale"]').forEach(r =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>r.addEventListener("change", (e) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>answers[step] = Number(e.target.value);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>render();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById("backBtn").addEventListener("click", () =&gt; { if (step&gt;0){ step--; render(); } });</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById("nextBtn").addEventListener("click", () =&gt; { if (answers[step]!=null){ step++; render(); } });</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>// Email gate</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (step === QUESTIONS.length){</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const total = computeTotal();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (total == null){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>step = 0; render(); return;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const pos = positionFromScore(total);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const borderline = isBorderline(total);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>app.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">      </span>${header}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="qtitle"&gt;Almost done&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p class="sub"&gt;Enter your email and I’ll send your Position + next-step prescription.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="kpi"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="box"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="pill"&gt;Your score&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="big"&gt;${total} / 50&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="box"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="pill"&gt;Your Position&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="big"&gt;${pos.position}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div style="color:var(--muted); margin-top:4px;"&gt;${pos.label}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>${borderline ? `</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="alert borderline"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>Borderline note: you’re right on a boundary. In your results email, use the “diagnosis” descriptions to choose the Position that best matches your lived reality this month.</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>` : ""}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;form id="kitForm" method="post" action="${KIT_FORM_ACTION}"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="field"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;label for="email"&gt;Email Address (required)&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;input id="email" name="email_address" type="email" required placeholder="you@example.com" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="field"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;label for="fname"&gt;First Name (optional)&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;input id="fname" name="fields[first_name]" type="text" placeholder="First name" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Hidden computed fields --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;input type="hidden" name="fields[position]" id="positionField" value="${pos.position}" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;input type="hidden" name="fields[score]" id="scoreField" value="${total}" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;input type="hidden" name="fields[assessment_version]" id="versionField" value="${ASSESSMENT_VERSION}" /&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="btns"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;button class="btn secondary" type="button" id="backBtn"&gt;Back&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;button class="btn" type="submit" id="submitBtn"&gt;Email me my results&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="fine"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>By submitting, you’ll receive your results email and occasional School of Wife emails. Unsubscribe anytime.</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/form&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById("backBtn").addEventListener("click", () =&gt; { step = QUESTIONS.length - 1; render(); });</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Optional: intercept submit to show a confirmation screen immediately.</p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Note: Kit may redirect based on your Kit form settings. This just improves UX.</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById("kitForm").addEventListener("submit", () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>// Let the browser submit normally to Kit.</p>
+<p class="p1"><span class="Apple-converted-space">      </span>// If you prefer AJAX submit, we can switch to fetch() later.</p>
+<p class="p1"><span class="Apple-converted-space">      </span>step = QUESTIONS.length + 1;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>setTimeout(render, 50);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>// Done screen (shown briefly if submit intercept runs)</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (step === QUESTIONS.length + 1){</p>
+<p class="p1"><span class="Apple-converted-space">    </span>app.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">      </span>${header}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="qtitle"&gt;Success — check your email&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p class="sub"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>Your results are on the way. If you don’t see them in a couple minutes, check Promotions/Spam.</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="alert"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>While you wait, you can close this page — your results will arrive by email.</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="btns"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="btn secondary" id="restartBtn"&gt;Start over&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById("restartBtn").addEventListener("click", () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>for (let i=0;i&lt;answers.length;i++) answers[i]=null;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>step = 0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>render();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">render();</p>
+<p class="p1">&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
