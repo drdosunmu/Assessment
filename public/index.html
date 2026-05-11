@@ -1,0 +1,597 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <title>Relationship Position Assessment | School of Wife</title>
+
+  <style>
+
+    :root{
+
+      --bg:#0b1220;
+
+      --card:#111a2e;
+
+      --text:#f5f7ff;
+
+      --muted:#c7d0ff;
+
+      --accent:#1677be;
+
+      --border:rgba(255,255,255,.12);
+
+      --danger:#ffb4a6;
+
+    }
+
+    body{ margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background:linear-gradient(180deg,#070b14,var(--bg)); color:var(--text); }
+
+    .wrap{ max-width:760px; margin:0 auto; padding:24px 16px 56px; }
+
+    .card{ background:rgba(17,26,46,.92); border:1px solid var(--border); border-radius:14px; padding:22px; box-shadow:0 10px 30px rgba(0,0,0,.35); }
+
+    h1{ font-size:22px; margin:0 0 8px; }
+
+    .sub{ color:var(--muted); margin:0 0 18px; line-height:1.45; }
+
+    .pill{ display:inline-block; font-size:12px; padding:6px 10px; border:1px solid var(--border); border-radius:999px; color:var(--muted); }
+
+    .row{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between; margin:14px 0 0; }
+
+    .progress{ width:100%; height:10px; background:rgba(255,255,255,.08); border-radius:999px; overflow:hidden; }
+
+    .bar{ height:100%; width:0%; background:var(--accent); transition:width .25s ease; }
+
+    .qtitle{ font-size:18px; margin:14px 0 6px; }
+
+    .qtext{ font-size:16px; margin:0 0 12px; line-height:1.45; }
+
+    .scale{ display:grid; grid-template-columns: 1fr; gap:10px; margin:12px 0 18px; }
+
+    .opt{
+
+      display:flex; align-items:center; gap:10px;
+
+      padding:12px 12px; border:1px solid var(--border); border-radius:12px;
+
+      cursor:pointer; user-select:none;
+
+      background:rgba(255,255,255,.03);
+
+    }
+
+    .opt input{ transform:scale(1.15); }
+
+    .opt:hover{ border-color:rgba(255,255,255,.25); }
+
+    .btns{ display:flex; gap:10px; justify-content:space-between; margin-top:8px; }
+
+    button{
+
+      appearance:none; border:0; border-radius:12px; padding:12px 14px;
+
+      font-weight:600; cursor:pointer;
+
+    }
+
+    .btn{ background:var(--accent); color:white; flex:1; }
+
+    .btn.secondary{ background:rgba(255,255,255,.08); color:var(--text); flex:0 0 auto; }
+
+    .btn:disabled{ opacity:.45; cursor:not-allowed; }
+
+    .fine{ color:var(--muted); font-size:13px; line-height:1.45; margin-top:12px; }
+
+    .field{ display:grid; gap:6px; margin:12px 0; }
+
+    label{ font-size:13px; color:var(--muted); }
+
+    input[type="text"], input[type="email"]{
+
+      width:100%; padding:12px 12px; border-radius:12px;
+
+      border:1px solid var(--border); background:rgba(255,255,255,.03); color:var(--text);
+
+      outline:none;
+
+    }
+
+    input:focus{ border-color:rgba(22,119,190,.9); }
+
+    .alert{ border:1px solid rgba(255,255,255,.18); background:rgba(255,255,255,.05); padding:12px; border-radius:12px; margin:12px 0; color:var(--muted); }
+
+    .alert.borderline{ border-color:rgba(255,180,166,.5); color:var(--danger); }
+
+    .kpi{ display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top:10px; }
+
+    .kpi .box{ border:1px solid var(--border); border-radius:12px; padding:12px; background:rgba(255,255,255,.03); }
+
+    .kpi .big{ font-size:20px; font-weight:700; margin-top:4px; color:var(--text); }
+
+    .footer{ margin-top:14px; font-size:12px; color:var(--muted); opacity:.9; }
+
+    a{ color:var(--muted); }
+
+  </style>
+
+</head>
+
+<body>
+
+  <div class="wrap">
+
+    <div class="card" id="app"></div>
+
+    <div class="footer">
+
+      Relationship education — not therapy or a clinical diagnosis.  
+
+      Dr. Dos | School of Wife
+
+    </div>
+
+  </div>
+
+
+
+<script>
+
+/** =========================
+
+ * CONFIG
+
+ * ========================= */
+
+const KIT_FORM_ACTION = "https://app.kit.com/forms/9430315/subscriptions";
+
+const ASSESSMENT_VERSION = "RPA_v1_2026-05-11";
+
+
+
+/** Reverse-scored questions: Q3, Q9, Q10 (0-indexed: 2, 8, 9) */
+
+const REVERSE_INDEXES = new Set([2, 8, 9]);
+
+
+
+/** Score cutoffs */
+
+function positionFromScore(total){
+
+  if (total >= 40) return { position: "Position 1", label: "Mutual Progress" };
+
+  if (total >= 30) return { position: "Position 2", label: "One Partner Stagnant" };
+
+  if (total >= 20) return { position: "Position 3", label: "Slow Divergence" };
+
+  return { position: "Position 4", label: "Active Divergence" };
+
+}
+
+
+
+/** Borderline windows: 39–40, 29–30, 19–20 */
+
+function isBorderline(total){
+
+  return (total === 39 || total === 40 || total === 29 || total === 30 || total === 19 || total === 20);
+
+}
+
+
+
+/** Questions */
+
+const QUESTIONS = [
+
+  { key:"q1", title:"Reciprocity", text:"When I reach for connection (conversation, affection, quality time), my partner usually responds in some way." },
+
+  { key:"q2", title:"Initiation", text:"My partner initiates connection sometimes — not only me." },
+
+  { key:"q3", title:"Emotional workload", text:"I feel I’m carrying most of the emotional work in our relationship.", reverse:true },
+
+  { key:"q4", title:"Repair", text:"After tension or conflict, we usually repair and reconnect within a few days." },
+
+  { key:"q5", title:"Mutual communication", text:"Our communication feels mutual — not one-sided." },
+
+  { key:"q6", title:"Emotional safety", text:"I feel emotionally safe expressing needs or disappointment without it becoming a bigger problem." },
+
+  { key:"q7", title:"Shared life", text:"We make plans together (small or big) and follow through more often than not." },
+
+  { key:"q8", title:"Shared enjoyment", text:"We still have moments of warmth, laughter, or ease — even if things aren’t perfect." },
+
+  { key:"q9", title:"Drift signal", text:"I often feel like I’m pursuing while my partner is pulling away or disengaging.", reverse:true },
+
+  { key:"q10", title:"Outside pull", text:"Something outside the relationship consistently gets prioritized over us (work, screens, another attachment, etc.).", reverse:true }
+
+];
+
+
+
+const SCALE = [
+
+  { v:1, label:"Strongly Disagree" },
+
+  { v:2, label:"Disagree" },
+
+  { v:3, label:"Neutral" },
+
+  { v:4, label:"Agree" },
+
+  { v:5, label:"Strongly Agree" }
+
+];
+
+
+
+/** =========================
+
+ * STATE
+
+ * ========================= */
+
+let step = 0; // 0..9 questions, 10 = email gate, 11 = done
+
+const answers = Array(QUESTIONS.length).fill(null);
+
+
+
+/** =========================
+
+ * HELPERS
+
+ * ========================= */
+
+function reverseScore(v){ return 6 - v; } // 1->5,2->4,3->3,4->2,5->1
+
+
+
+function computeTotal(){
+
+  let total = 0;
+
+  for (let i=0;i<answers.length;i++){
+
+    const v = answers[i];
+
+    if (v == null) return null;
+
+    total += REVERSE_INDEXES.has(i) ? reverseScore(v) : v;
+
+  }
+
+  return total;
+
+}
+
+
+
+function render(){
+
+  const app = document.getElementById("app");
+
+  const totalSteps = QUESTIONS.length + 1; // questions + email gate
+
+  const currentIndex = Math.min(step, QUESTIONS.length); // 0..10
+
+  const progressPct = Math.round((currentIndex / totalSteps) * 100);
+
+
+
+  const header = `
+
+    <div class="row">
+
+      <div>
+
+        <h1>Relationship Position Assessment</h1>
+
+        <p class="sub">Find your pattern. Get your prescription. Takes 2–3 minutes.</p>
+
+      </div>
+
+      <div class="pill">${currentIndex}/${totalSteps}</div>
+
+    </div>
+
+    <div class="progress" aria-label="Progress">
+
+      <div class="bar" style="width:${progressPct}%"></div>
+
+    </div>
+
+  `;
+
+
+
+  if (step < QUESTIONS.length){
+
+    const q = QUESTIONS[step];
+
+    const selected = answers[step];
+
+
+
+    const opts = SCALE.map(o => `
+
+      <label class="opt">
+
+        <input type="radio" name="scale" value="${o.v}" ${selected===o.v ? "checked":""} />
+
+        <div><strong>${o.v}</strong> — ${o.label}</div>
+
+      </label>
+
+    `).join("");
+
+
+
+    const reverseNote = q.reverse
+
+      ? `<div class="alert">Note: This item is reverse-scored behind the scenes (you don’t need to do anything).</div>`
+
+      : "";
+
+
+
+    app.innerHTML = `
+
+      ${header}
+
+      <div class="qtitle">Q${step+1}. ${q.title}</div>
+
+      <div class="qtext">${q.text}</div>
+
+      ${reverseNote}
+
+      <div class="scale">${opts}</div>
+
+      <div class="btns">
+
+        <button class="btn secondary" id="backBtn" ${step===0 ? "disabled":""}>Back</button>
+
+        <button class="btn" id="nextBtn" ${selected==null ? "disabled":""}>Next</button>
+
+      </div>
+
+      <div class="fine">
+
+        Score each statement from 1 (Strongly Disagree) to 5 (Strongly Agree).
+
+      </div>
+
+    `;
+
+
+
+    // handlers
+
+    app.querySelectorAll('input[name="scale"]').forEach(r => {
+
+      r.addEventListener("change", (e) => {
+
+        answers[step] = Number(e.target.value);
+
+        render();
+
+      });
+
+    });
+
+
+
+    document.getElementById("backBtn").addEventListener("click", () => { if (step>0){ step--; render(); } });
+
+    document.getElementById("nextBtn").addEventListener("click", () => { if (answers[step]!=null){ step++; render(); } });
+
+
+
+    return;
+
+  }
+
+
+
+  // Email gate
+
+  if (step === QUESTIONS.length){
+
+    const total = computeTotal();
+
+    if (total == null){
+
+      step = 0; render(); return;
+
+    }
+
+    const pos = positionFromScore(total);
+
+    const borderline = isBorderline(total);
+
+
+
+    app.innerHTML = `
+
+      ${header}
+
+      <div class="qtitle">Almost done</div>
+
+      <p class="sub">Enter your email and I’ll send your Position + next-step prescription.</p>
+
+
+
+      <div class="kpi">
+
+        <div class="box">
+
+          <div class="pill">Your score</div>
+
+          <div class="big">${total} / 50</div>
+
+        </div>
+
+        <div class="box">
+
+          <div class="pill">Your Position</div>
+
+          <div class="big">${pos.position}</div>
+
+          <div style="color:var(--muted); margin-top:4px;">${pos.label}</div>
+
+        </div>
+
+      </div>
+
+
+
+      ${borderline ? `
+
+        <div class="alert borderline">
+
+          Borderline note: you’re right on a boundary. In your results email, use the “diagnosis” descriptions to choose the Position that best matches your lived reality this month.
+
+        </div>
+
+      ` : ""}
+
+
+
+      <form id="kitForm" method="post" action="${KIT_FORM_ACTION}">
+
+        <div class="field">
+
+          <label for="email">Email Address (required)</label>
+
+          <input id="email" name="email_address" type="email" required placeholder="you@example.com" />
+
+        </div>
+
+        <div class="field">
+
+          <label for="fname">First Name (optional)</label>
+
+          <input id="fname" name="fields[first_name]" type="text" placeholder="First name" />
+
+        </div>
+
+
+
+        <!-- Hidden computed fields -->
+
+        <input type="hidden" name="fields[position]" id="positionField" value="${pos.position}" />
+
+        <input type="hidden" name="fields[score]" id="scoreField" value="${total}" />
+
+        <input type="hidden" name="fields[assessment_version]" id="versionField" value="${ASSESSMENT_VERSION}" />
+
+
+
+        <div class="btns">
+
+          <button class="btn secondary" type="button" id="backBtn">Back</button>
+
+          <button class="btn" type="submit" id="submitBtn">Email me my results</button>
+
+        </div>
+
+
+
+        <div class="fine">
+
+          By submitting, you’ll receive your results email and occasional School of Wife emails. Unsubscribe anytime.
+
+        </div>
+
+      </form>
+
+    `;
+
+
+
+    document.getElementById("backBtn").addEventListener("click", () => { step = QUESTIONS.length - 1; render(); });
+
+
+
+    // Optional: intercept submit to show a confirmation screen immediately.
+
+    // Note: Kit may redirect based on your Kit form settings. This just improves UX.
+
+    document.getElementById("kitForm").addEventListener("submit", () => {
+
+      // Let the browser submit normally to Kit.
+
+      // If you prefer AJAX submit, we can switch to fetch() later.
+
+      step = QUESTIONS.length + 1;
+
+      setTimeout(render, 50);
+
+    });
+
+
+
+    return;
+
+  }
+
+
+
+  // Done screen (shown briefly if submit intercept runs)
+
+  if (step === QUESTIONS.length + 1){
+
+    app.innerHTML = `
+
+      ${header}
+
+      <div class="qtitle">Success — check your email</div>
+
+      <p class="sub">
+
+        Your results are on the way. If you don’t see them in a couple minutes, check Promotions/Spam.
+
+      </p>
+
+      <div class="alert">
+
+        While you wait, you can close this page — your results will arrive by email.
+
+      </div>
+
+      <div class="btns">
+
+        <button class="btn secondary" id="restartBtn">Start over</button>
+
+      </div>
+
+    `;
+
+    document.getElementById("restartBtn").addEventListener("click", () => {
+
+      for (let i=0;i<answers.length;i++) answers[i]=null;
+
+      step = 0;
+
+      render();
+
+    });
+
+  }
+
+}
+
+
+
+render();
+
+</script>
+
+</body>
+
+</html>
