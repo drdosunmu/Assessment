@@ -248,6 +248,9 @@ const answers = Array(QUESTIONS.length).fill(null);
 
  * ========================= */
 
+/** Kit custom field key for each answer, e.g. "q1_reciprocity", "q10_outside_pull" */
+function answerFieldKey(q, i){ return `q${i+1}_` + q.title.toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_|_$/g, ""); }
+
 function reverseScore(v){ return 6 - v; } // 1->5,2->4,3->3,4->2,5->1
 
 
@@ -489,6 +492,9 @@ function render(){
         <input type="hidden" name="fields[score]" id="scoreField" value="${total}" />
 
         <input type="hidden" name="fields[assessment_version]" id="versionField" value="${ASSESSMENT_VERSION}" />
+
+        <!-- Raw answers (1-5, before reverse scoring), one Kit custom field per question -->
+        ${QUESTIONS.map((qq, i) => `<input type="hidden" name="fields[${answerFieldKey(qq, i)}]" value="${answers[i]}" />`).join("")}
 
 
 
