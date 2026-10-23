@@ -279,11 +279,13 @@ function render(){
 
   const app = document.getElementById("app");
 
-  const totalSteps = QUESTIONS.length + 1; // questions + email gate
+  const totalQuestions = QUESTIONS.length;
 
-  const currentIndex = Math.min(step, QUESTIONS.length); // 0..10
+  const currentIndex = Math.min(step, totalQuestions); // questions answered so far
 
-  const progressPct = Math.round((currentIndex / totalSteps) * 100);
+  const progressPct = Math.round((currentIndex / totalQuestions) * 100);
+
+  const stepLabel = step < totalQuestions ? `Question ${step + 1} of ${totalQuestions}` : "Final step";
 
 
 
@@ -299,7 +301,7 @@ function render(){
 
       </div>
 
-      <div class="pill">${currentIndex}/${totalSteps}</div>
+      <div class="pill">${stepLabel}</div>
 
     </div>
 
